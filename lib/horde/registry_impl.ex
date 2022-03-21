@@ -108,6 +108,8 @@ defmodule Horde.RegistryImpl do
   end
 
   def handle_info({:crdt_update, diffs}, state) do
+    Logger.info("Registry #{inspect(diffs)}")
+
     new_state = process_diffs(state, diffs)
     {:noreply, new_state}
   end
