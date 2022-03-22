@@ -846,6 +846,8 @@ defmodule Horde.ProcessesSupervisor do
   @impl true
   def terminate(_, %{children: children} = state) do
     :ok = terminate_children(children, %{state | shutting_down: true})
+    Process.sleep(250)
+    :ok
   end
 
   defp terminate_children(children, state) do
